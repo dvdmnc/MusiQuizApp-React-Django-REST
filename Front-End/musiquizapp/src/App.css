@@ -1,0 +1,219 @@
+#launchgame {
+  margin-top: 50vh;
+  }
+
+.button{
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 5px;
+  width : 182px;
+  height: auto;
+  text-align: center;
+  margin: auto;
+}
+
+#button-container{
+  display: flex;
+  margin-top: 50vh;
+  justify-content: center;
+}
+
+@media (max-width : 410px){
+  #button-container{
+    display: block;
+    text-align: center;
+  }
+}
+
+#form{
+  display: flex; 
+  justify-content: center; 
+  margin-Top: 50vh;
+  align-items: center;
+}
+
+@media (max-width: 512px){
+  #form{
+    display: block;
+    text-align: center;
+  }
+}
+
+#inputs{
+  display: block;
+  margin-right : 20px;
+}
+
+.input{
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media(max-width: 400px){
+  .input{
+    display: block;
+    text-align: center;
+  }
+}
+
+.input label{
+  font-size: 24px;
+}
+
+#left_display{
+  width:50vw; 
+  border-right: 5px solid black; 
+  left:0%; 
+  display: flex; 
+  padding-right: 0px
+}
+
+#buttons{
+  position: absolute;
+  left: 30%; 
+  top:1%;
+}
+
+#buttons button{
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#buttons button:hover{
+  background-color: black;
+  color: white;
+  transition-duration: 0.4s;
+}
+
+#timeturns{
+  position: absolute; 
+  left: 1%; 
+  top: 1%; 
+  display: flex; 
+  border: 2px solid black; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+}
+
+#timeturns h5{
+  margin-right: 10px;
+}
+
+#timer{
+  border-left : 2px solid black;
+  padding-left: 7px;
+}
+
+#listen{
+  margin-top: 10vh; 
+  width:25vw; 
+  text-align: center; 
+  border-right : 5px solid black;
+  border-top : 5px solid black;
+  padding-top: 30px;
+}
+
+.listendisplay{
+  display: flex;
+}
+
+.listendisplay a{
+  color: black; 
+  margin: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.listendisplay a:hover{
+  text-decoration: underline;
+}
+
+.listendisplay audio{
+  width:70%
+}
+
+#songs{
+  text-align: center; 
+  margin-top:10vh; 
+  width:25vw;
+  border-top : 5px solid black; 
+  padding-top: 30px
+}
+
+.songlink{
+  display: block;
+  margin-top: 25px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.songlink:hover{
+  text-decoration: underline;
+}
+
+#right_display{
+  width:50vw;
+  right:0%
+  }
+
+#faces{
+    height:50vh;
+    border-bottom: 5px solid black; 
+    text-align: center;
+    padding-bottom: 10px
+  }
+
+.face{
+  max-width: 30%;
+  max-height: 30%;
+  margin: 7px;
+}
+
+.facelink{
+  cursor: pointer;
+}
+
+img:hover {
+  -webkit-transform:scale(5) translate(-40px,40px); 
+  transform:scale(5) translate(-40px,40px);
+  transition: all 0.3s ease-in;
+  position: relative; /* So we can apply the z-index for all images to be displayed in front of the scoretable (whose z-index was set to 0) */
+  z-index: 1;
+}
+
+#names{
+  height:50vh; 
+  text-align: center
+}
+
+.namelink{
+  margin-top: 10px;
+  display: block;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.namelink:hover{
+  text-decoration: underline;
+}
+
+#scoretable{
+  position: absolute; 
+  left:46%; 
+  top:43%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+  background-color: white;
+  z-index: 0
+}
+
+table, th, td {
+  border:3px solid black;
+  padding: 5px;
+}
+
