@@ -38,6 +38,8 @@ function Game() {
       }
     
     const SetNewGame = () =>{
+        GetData()
+        setRestart(restart + 1)
         setPause('play')  
         Array.from(document.querySelectorAll('.songlink')).forEach(song =>{
             song.style.color = 'black'
@@ -57,12 +59,12 @@ function Game() {
             face.firstElementChild.style.filter = 'none'
             face.firstElementChild.style.pointerEvents = 'fill'
         })
-        GetData()
-        setRestart(restart + 1)
+        
     }
 
     let GetData = async() => {
         try {
+            singers.length = faces.length = audios.length = 0 //Clean previous singers, faces and samples
             const response = await fetch('http://127.0.0.1:8000/api/');
             const data = await response.json();
             setData(data)
@@ -99,7 +101,7 @@ function Game() {
             setSongs(newSongs);
 
 
-            singers.length = faces.length = audios.length = 0 //Clean previous singers, faces and samples
+           
             for (let b = newSingers.length -1; b >= 0; b--){ //Display the singers in random order
                 var index = Math.floor(Math.random() * newSingers.length);
                 singers.push(newSingers[index])
@@ -133,7 +135,14 @@ function Game() {
         const songs_singers = dataFetch[2]
         const singers_names_faces= dataFetch[1]
 
-        if (link === ''){
+        if (pause === 'suivant'){
+            alert('Fin du tour')
+        }
+        else if(scores[restart-1] === 30){
+            alert('Maximum de points atteint')
+            setPause('suivant')
+        }
+        else if (link === ''){
             setLink(data)
         }
         else{
@@ -143,13 +152,13 @@ function Game() {
             scores[restart-1] += 1
             if ([...document.querySelectorAll('*')].find(el => el.textContent === link) !== undefined){
                 let element = [...document.querySelectorAll('*')].find(el => el.textContent === link)
-                element.style.backgroundColor = 'green'
+                element.style.background = 'black'
                 element.style.color = 'white'
             }else if (document.querySelector(`audio[src="${link}"]`) !== null){
                 let element = document.querySelector(`audio[src="${link}"]`)
                 element.pause()
                 element.style.filter = "blur(5px)"
-                element.previousElementSibling.style.backgroundColor = 'green'
+                element.previousElementSibling.style.background = 'black'
                 element.previousElementSibling.style.color = 'white'
                 element.previousElementSibling.style.pointerEvents = 'none'
             }else{
@@ -159,13 +168,13 @@ function Game() {
             }
             if ([...document.querySelectorAll('*')].find(el => el.textContent === data) !== undefined){
                 let element = [...document.querySelectorAll('*')].find(el => el.textContent === data)
-                element.style.backgroundColor = 'green'
+                element.style.background = 'black'
                 element.style.color = 'white'
             }else if (document.querySelector(`audio[src="${data}"]`) !== null){
                 let element = document.querySelector(`audio[src="${data}"]`)
                 element.pause()
                 element.style.filter = "blur(5px)"
-                element.previousElementSibling.style.backgroundColor = 'green'
+                element.previousElementSibling.style.background = 'black'
                 element.previousElementSibling.style.color = 'white'
                 element.previousElementSibling.style.pointerEvents = 'none'
             }else{
@@ -192,7 +201,16 @@ function Game() {
     ))
 
     const SingersDisplay = singers.map((singer, index) => (
-        <a className="namelink" key={index} onClick={() => {SetLink(singer)}}>{singer}</a>
+        <>
+        {index % 2 === 0 ?
+        (<div id='namesdiv'>
+            <a className="namelink" key={index} onClick={() => {SetLink(singer)}}>{singer}</a>
+            {singers[index+1] !== undefined ?
+            (<a className="namelink" key={index+1} onClick={() => {SetLink(singers[index+1])}}>{singers[index+1]}</a>) : (null)
+            }
+        </div>) : (null)
+        }
+        </>
     ))
         
     const FacesDisplay = faces.map((face, index) => (
@@ -213,22 +231,22 @@ function Game() {
             <h5 id="timer">{shouldRender? (<Timer time={Time} data={pause} end={PauseorPlay} reset={restart}/>) : null}</h5>
         </div>
         <div id="listen">
-            {shouldRender? (AudiosDisplay) : (<div>En Chargement...</div>)}
+            {shouldRender? (AudiosDisplay) : (<div className='loading'>En Chargement...</div>)}
         </div>
         <div id="songs">
-        {shouldRender?( SongsDisplay ) : (<div>En Chargement...</div>)}
+        {shouldRender?( SongsDisplay ) : (<div className='loading' >En Chargement...</div>)}
         </div>
     </div>
     <div id="right_display" >
         <div id="faces">
-        {shouldRender?(FacesDisplay) : (<div>En Chargement...</div>)}
+        {shouldRender?(FacesDisplay) : (<div className='loading'>En Chargement...</div>)}
         </div>
         <br />
         <div id="names">
-        {shouldRender?(SingersDisplay) : (<div>En Chargement...</div>)}
+        {shouldRender?(SingersDisplay) : (<div className='loading'>En Chargement...</div>)}
         </div>
     </div>
-    {GameType === 'Jeu en équipe' ? (<ScoreTable number={NumberTeamOrTurn} score={scores}/>) : null}
+    {GameType === 'Jeu en équipe' ? (<ScoreTable score={scores}/>) : null}
 </div>
   )
 }
