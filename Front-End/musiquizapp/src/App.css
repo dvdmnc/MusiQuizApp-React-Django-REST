@@ -1,12 +1,24 @@
+body{
+  background-image: url("http://127.0.0.1:8000/media/images/musiquiz.png");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  margin: 8px 0 0 0;
+}
+
 #launchgame {
-  margin-top: 50vh;
+  margin-top: 80vh;
   }
 
 .button{
-  background-color: black;
+  background: linear-gradient(45deg,#ff830b, #ee2b0a);
   color: white;
   font-size: 16px;
   border-radius: 12px;
+  border: 2px solid #0a36b2;
   padding: 5px;
   width : 182px;
   height: auto;
@@ -16,8 +28,13 @@
 
 #button-container{
   display: flex;
-  margin-top: 50vh;
+  margin-top: 80vh;
   justify-content: center;
+}
+
+#button-container h1{
+  color: white;
+  margin-right: 20px;
 }
 
 @media (max-width : 410px){
@@ -30,7 +47,7 @@
 #form{
   display: flex; 
   justify-content: center; 
-  margin-Top: 50vh;
+  margin-Top: 80vh;
   align-items: center;
 }
 
@@ -61,11 +78,12 @@
 
 .input label{
   font-size: 24px;
+  color: white;
 }
 
 #left_display{
   width:50vw; 
-  border-right: 5px solid black; 
+  border-right: 5px solid white; 
   left:0%; 
   display: flex; 
   padding-right: 0px
@@ -73,7 +91,7 @@
 
 #buttons{
   position: absolute;
-  left: 30%; 
+  left: 33%; 
   top:1%;
 }
 
@@ -82,6 +100,7 @@
   border-radius: 12px;
   background-color: white;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  font-size: x-large;
 }
 
 #buttons button:hover{
@@ -96,11 +115,13 @@
   top: 1%; 
   display: flex; 
   border: 2px solid black; 
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: white;
+  font-size: x-large;
 }
 
 #timeturns h5{
-  margin-right: 10px;
+  margin: 10px 10px;
 }
 
 #timer{
@@ -108,24 +129,36 @@
   padding-left: 7px;
 }
 
+.loading{
+  color: white;
+  font-size: x-large;
+  margin-top: 10vh;
+}
+
 #listen{
   margin-top: 10vh; 
   width:25vw; 
   text-align: center; 
-  border-right : 5px solid black;
-  border-top : 5px solid black;
+  border-right : 5px solid white;
+  border-top : 5px solid white;
   padding-top: 30px;
 }
 
 .listendisplay{
   display: flex;
+  padding-right: 10px;
 }
 
 .listendisplay a{
-  color: black; 
+  background: linear-gradient(45deg,#75600c, #f8e55f);
+  color: white;
+  border: solid 2px #fa5907;
+  border-radius: 12px; 
+  width: 20%;
   margin: 20px;
   text-decoration: none;
   cursor: pointer;
+  word-wrap: break-word;
 }
 
 .listendisplay a:hover{
@@ -133,23 +166,29 @@
 }
 
 .listendisplay audio{
-  width:70%
+  width:70%;
+  height: 40px;
 }
 
 #songs{
   text-align: center; 
   margin-top:10vh; 
   width:25vw;
-  border-top : 5px solid black; 
-  padding-top: 30px
+  border-top : 5px solid white;
 }
 
 .songlink{
   display: block;
-  margin-top: 25px;
-  color: black;
+  margin: 25px 25px;
+  color: white;
   text-decoration: none;
   cursor: pointer;
+  font-size: 28px;
+  background: linear-gradient(45deg,#ff830b, #ee2b0a);
+  border-radius: 12px;
+  border: 2px solid #0a36b2;
+  width: 70%;
+  word-wrap: break-word;
 }
 
 .songlink:hover{
@@ -163,15 +202,16 @@
 
 #faces{
     height:50vh;
-    border-bottom: 5px solid black; 
+    border-bottom: 5px solid white; 
+    padding-bottom: 10px;
     text-align: center;
-    padding-bottom: 10px
   }
 
 .face{
-  max-width: 30%;
-  max-height: 30%;
+  max-width: 25%;
+  max-height: 25%;
   margin: 7px;
+  border: 2px solid white;
 }
 
 .facelink{
@@ -188,15 +228,25 @@ img:hover {
 
 #names{
   height:50vh; 
-  text-align: center
+  text-align: center;
+}
+
+#namesdiv {
+  display:flex;
+  justify-content: center;
 }
 
 .namelink{
-  margin-top: 10px;
+  margin: 10px 10px;
   display: block;
-  color: black;
+  color: white;
+  background: linear-gradient(45deg,#1ad570, #0b665b);
   text-decoration: none;
   cursor: pointer;
+  font-size: xx-large;
+  border-radius: 12px;
+  width: 40%;
+  border: 2px solid #f8e65f;
 }
 
 .namelink:hover{
@@ -204,16 +254,17 @@ img:hover {
 }
 
 #scoretable{
+  color: black;
   position: absolute; 
   left:46%; 
   top:43%; 
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
-  background-color: white;
-  z-index: 0
+  z-index: 0;
+  background: white;
+  font-size: large;
 }
 
 table, th, td {
   border:3px solid black;
   padding: 5px;
 }
-
