@@ -10,7 +10,7 @@ class Singers(models.Model):
         return f"Singer : {self.name}"
 class Songs(models.Model):
     name = models.CharField(max_length=500)
-    sample = models.FileField(upload_to = 'audio/', default=None)
+    sample = models.URLField(max_length=1000)
     singer = models.ForeignKey(
         Singers,
         on_delete=models.CASCADE
