@@ -189,5 +189,5 @@ MEDIA_URL = '/media/'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'https://musiquizapp.up.railway.app/'
+    'https://musiquizapp.up.railway.app'
 ]
