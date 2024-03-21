@@ -99,6 +99,7 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -192,5 +193,5 @@ MEDIA_URL = '/media/'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'https://musiquizapp.up.railway.app'
+    'https://musiquizapp.up.railway.app/'
 ]
