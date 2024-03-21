@@ -32,6 +32,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','api-musiquizapp.up.railway.app']
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'https://musiquizapp.up.railway.app',
+    'https://api-musiquizapp.up.railway.app'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'https://musiquizapp.up.railway.app',
+    'https://api-musiquizapp.up.railway.app'
+]
 
 # Application definition
 
@@ -97,8 +108,8 @@ SIMPLE_JWT = {
 
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -190,9 +201,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'https://musiquizapp.up.railway.app',
-    'https://api-musiquizapp.up.railway.app'
-]
