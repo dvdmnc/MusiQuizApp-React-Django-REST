@@ -16,7 +16,7 @@ def getData(request):
     songs_samples = {}
     for dict in songssingers:
         songs.append(dict["name"])
-        songs_samples[dict["name"]] = request.build_absolute_uri(dict["sample"].url)
+        songs_samples[dict["name"]] = dict["sample"]
         for dict2 in singers:
             if dict["singer"] == dict2["id"]:
                 try: 
